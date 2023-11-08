@@ -76,6 +76,31 @@ class RealmRepository {
         return !data.isEmpty
     }
     
+    
+    // 섹션 별 나눠진 앱 리턴
+    func allGenresApp() -> [GenreItems] {
+        
+        let data = realm.objects(AppGenreTable.self)
+        
+        var returnData: [GenreItems] = Array(data).map { item in
+            
+            let name = item.genreName
+            let items = Array(item.appItems.map { AppInfo($0) })
+            
+            let newGenres = GenreItems(
+                name: name,
+                items: items
+            )
+            
+            return newGenres
+        }
+        
+        return returnData
+    }
+    
+    
+    
+    
     func printURL() {
         print(realm.configuration.fileURL!)
     }

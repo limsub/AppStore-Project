@@ -13,7 +13,7 @@ class TabBarViewController: UITabBarController {
     
     let homeVC = SearchAppViewController()
     
-    let saveVC = SearchAppViewController()
+    let saveVC = StoreViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

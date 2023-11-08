@@ -29,3 +29,23 @@ struct AppInfo: Codable {
     let version: String
     let releaseNotes: String
 }
+
+extension AppInfo {
+    init(_ app: AppItemTable) {
+        self.screenshotUrls = Array(app.screenshotUrls)
+        self.trackName = app.trackName
+        self.genres = Array(app.genres)
+        self.trackContentRating = app.trackContentRating
+        self.description = app.appDescription
+        self.price = app.price
+        self.sellerName = app.sellerName
+        self.formattedPrice = app.formattedPrice
+        self.userRatingCount = app.userRatingCount
+        self.averageUserRating = app.averageUserRating
+        self.artworkUrl512 = app.artworkUrl512
+        self.languageCodesISO2A = Array(app.languageCodesISO2A)
+        self.trackId = app.trackId
+        self.version = app.version
+        self.releaseNotes = app.releaseNotes
+    }
+}

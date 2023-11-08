@@ -46,7 +46,6 @@ class SearchAppTableViewCell: BaseTableViewCell {
     // 렘에 있는지 여부
     var isDownloaded = false {
         didSet {
-            print("ㅑㅑ")
             self.downloadButton.setTitle(isDownloaded ? "삭제" : "받기" , for: .normal)
         }
     }
