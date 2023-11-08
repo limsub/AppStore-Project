@@ -43,7 +43,18 @@ class SearchAppTableViewCell: BaseTableViewCell {
         return view
     }()
     
+    // 렘에 있는지 여부
+    var isDownloaded = false {
+        didSet {
+            print("ㅑㅑ")
+            self.downloadButton.setTitle(isDownloaded ? "삭제" : "받기" , for: .normal)
+        }
+    }
+    
+    
     var disposeBag = DisposeBag()
+    
+    let repository = RealmRepository()
     
     override func setConfigure() {
         contentView.addSubview(iconImageView)
@@ -89,7 +100,10 @@ class SearchAppTableViewCell: BaseTableViewCell {
         disposeBag = DisposeBag()
     }
     
-    func designCell(_ sender: AppInfo, isDownloaded: Bool) {
+    func designCell(_ sender: AppInfo) {
+        
+        isDownloaded = repository.checkDownload(AppItemTable(sender))
+        
         nameLabel.text = sender.trackName
         descriptionLabel.text = sender.description
         iconImageView.kf.setImage(with: URL(string: sender.artworkUrl512))

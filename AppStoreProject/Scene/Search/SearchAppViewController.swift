@@ -49,19 +49,23 @@ class SearchAppViewController: BaseViewController {
         items
             .bind(to: tableView.rx.items(cellIdentifier: SearchAppTableViewCell.description(), cellType: SearchAppTableViewCell.self)) { (row, element, cell) in
                 
-                let isDownloaded = self.repository.checkDownload(AppItemTable(element))
-                
-                cell.designCell(element, isDownloaded: isDownloaded)
+                cell.designCell(element)
                 
                 cell.downloadButton.rx.tap
                     .subscribe(with: self) { owner , _ in
-                        if !isDownloaded {
+                        
+                        
+                        if !cell.isDownloaded {
                             // 추가
+                            print("추가")
                             owner.repository.addApp(element.genres[0], item: AppItemTable(element))
                         } else {
                             // 삭제
+                            print("삭제")
                             owner.repository.deleteApp(item: AppItemTable(element))
                         }
+                        
+                        cell.isDownloaded.toggle()
                     }
                     .disposed(by: cell.disposeBag)
             }
