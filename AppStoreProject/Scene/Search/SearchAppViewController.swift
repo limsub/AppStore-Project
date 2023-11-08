@@ -32,10 +32,13 @@ class SearchAppViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     
+    let repository = RealmRepository()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        repository.printURL()
         
         bind()
     }
@@ -47,26 +50,16 @@ class SearchAppViewController: BaseViewController {
             .bind(to: tableView.rx.items(cellIdentifier: SearchAppTableViewCell.description(), cellType: SearchAppTableViewCell.self)) { (row, element, cell) in
                 
                 cell.designCell(element)
+                
+                cell.downloadButton.rx.tap
+                    .subscribe(with: self) { owner , _ in
+                        owner.repository.addApp(element.genres[0], item: AppItemTable(element))
+                    }
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
         
-        // 네트워크 콜
-//        let request = BasicAPIManager.fetchData("todo")
-//            .asDriver(onErrorJustReturn: SearchAppModel(resultCount: 0, results: []))
-//        // drive : 여러 곳에 연결해줄 때, share 기능을 활용할 수 있는 장점
-//        request
-//            .drive(with: self) { owner , value in
-//                owner.items.onNext(value.results)
-//            }
-//            .disposed(by: disposeBag)
-//
-//        request
-//            .map { value in
-//                "\(value.resultCount)개의 검색 결과"
-//            }
-//            .drive(navigationItem.rx.title)
-//            .disposed(by: disposeBag)
-        
+
         let request = searchController.searchBar.rx.searchButtonClicked
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(searchController.searchBar.rx.text.orEmpty) { _, query in
@@ -80,6 +73,7 @@ class SearchAppViewController: BaseViewController {
         request
             .drive(with: self) { owner , value in
                 owner.items.onNext(value.results)
+//                print(value.results[0])
             }
             .disposed(by: disposeBag)
         

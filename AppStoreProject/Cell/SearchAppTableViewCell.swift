@@ -43,7 +43,7 @@ class SearchAppTableViewCell: BaseTableViewCell {
         return view
     }()
     
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
     override func setConfigure() {
         contentView.addSubview(iconImageView)
@@ -81,6 +81,12 @@ class SearchAppTableViewCell: BaseTableViewCell {
     override func setting() {
         
         
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
     }
     
     func designCell(_ sender: AppInfo) {
