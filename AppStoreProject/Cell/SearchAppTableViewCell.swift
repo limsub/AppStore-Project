@@ -89,10 +89,12 @@ class SearchAppTableViewCell: BaseTableViewCell {
         disposeBag = DisposeBag()
     }
     
-    func designCell(_ sender: AppInfo) {
+    func designCell(_ sender: AppInfo, isDownloaded: Bool) {
         nameLabel.text = sender.trackName
         descriptionLabel.text = sender.description
         iconImageView.kf.setImage(with: URL(string: sender.artworkUrl512))
+        
+        downloadButton.setTitle(isDownloaded ? "삭제" : "받기" , for: .normal)
     }
     
     

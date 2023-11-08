@@ -15,7 +15,6 @@ class RealmRepository {
     // 받기 눌러서 데이터 추가
     // 1. 해당 장르 테이블이 있으면 거기다 추가
     // 2. 해당 장르 테이블이 없으면 장르 테이블 만들고, 거기다 추가
-    
     func addApp(_ genreName: String, item: AppItemTable) {
         
         print("trackId : \(item.trackId)")
@@ -47,6 +46,34 @@ class RealmRepository {
                 print("에러")
             }
         }
+    }
+    
+    
+    // 삭제 눌러서 데이터 삭제 (반드시 데이터가 있는 걸 확인하고 실행하기. 인덱스 에러 날 가능성 있음)
+    func deleteApp(item: AppItemTable) {
+        // 1. 렘에서 해당 데이터를 찾는다
+        // 2. 삭제
+        
+        let data = realm.objects(AppItemTable.self).where {
+            $0.trackId == item.trackId
+        }[0]
+        
+        do {
+            try realm.write {
+                realm.delete(data)
+            }
+        } catch {
+            print("에러")
+        }
+    }
+    
+
+    // 기존에 추가했던 앱인지 확인 -> Bool 리턴
+    func checkDownload(_ item: AppItemTable) -> Bool {
+        let data = realm.objects(AppItemTable.self).where {
+            $0.trackId == item.trackId
+        }
+        return !data.isEmpty
     }
     
     func printURL() {
