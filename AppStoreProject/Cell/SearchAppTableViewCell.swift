@@ -88,4 +88,6 @@ class SearchAppTableViewCell: BaseTableViewCell {
         descriptionLabel.text = sender.description
         iconImageView.kf.setImage(with: URL(string: sender.artworkUrl512))
     }
+    
+    
 }
