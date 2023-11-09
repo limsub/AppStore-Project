@@ -22,9 +22,20 @@ class SearchAppViewController: BaseViewController {
         return view
     }()
     
+    let activityIndicator = {
+        let view = UIActivityIndicatorView()
+        view.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        view.hidesWhenStopped = true
+        return view
+    }()
+    
 //    let searchBar = UISearchBar()
     let searchController = UISearchController(searchResultsController: nil)
     
+    var offset = 0;
+    
+    var searchText = ""
+    var resultCnt = BehaviorSubject(value: 0)
     
     var data: [AppInfo] = []
 //    var data = ["a", "b", "c", "d", "e"]
@@ -37,6 +48,8 @@ class SearchAppViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         repository.printURL()
         
@@ -77,7 +90,10 @@ class SearchAppViewController: BaseViewController {
             .withLatestFrom(searchController.searchBar.rx.text.orEmpty) { _, query in
                 return query
             }
-            .flatMap { BasicAPIManager.fetchData($0) }
+            .flatMap { value in
+                self.searchText = value
+                return BasicAPIManager.fetchInitialData(value)
+            }
             .asDriver(onErrorJustReturn: SearchAppModel(resultCount: 0, results: []))
         // 여러 곳에 연결할 때, share 기능을 활용할 수 있도록 drive로 바꿔주었다.
         // 기존 타입은 complete, error 이벤트가 발생할 수 있는 Observable이었기 때문에 onErrorJustReturn 으로 예외처리 해준다
@@ -90,11 +106,17 @@ class SearchAppViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         request
-            .map { value in
-                "\(value.resultCount)개의 검색 결과"
+            .map { $0.resultCount }
+            .drive(with: self) { owner , value in
+                owner.resultCnt.onNext(value)
             }
-            .drive(navigationItem.rx.title)
             .disposed(by: disposeBag)
+        
+        resultCnt
+            .map { "\($0)개의 검색 결과"}
+            .bind(to: navigationItem.rx.title)
+            .disposed(by: disposeBag)
+        
         
         
     }
@@ -103,12 +125,16 @@ class SearchAppViewController: BaseViewController {
         super.setConfigure()
         
         view.addSubview(tableView)
+        view.addSubview(activityIndicator)
     }
     override func setConstraints() {
         super.setConstraints()
         
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalTo(view.safeAreaLayoutGuide)
         }
     }
     override func setting() {
@@ -117,8 +143,47 @@ class SearchAppViewController: BaseViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.hidesNavigationBarDuringPresentation = false
+        
+        tableView.delegate = self
     }
+
+}
+
+extension SearchAppViewController: UITableViewDelegate {
     
-    
-    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        
+        print(currentOffset - maximumOffset)
+        
+        if currentOffset > maximumOffset {
+            activityIndicator.startAnimating()
+            
+            offset += 30
+            
+            BasicAPIManager.appendData(searchText, offset: offset) { response in
+                switch response {
+                case .success(let data):
+                    var oldData = try! self.items.value()
+                    oldData.append(contentsOf: data.results)
+                    self.items.onNext(oldData)
+                    
+                    var oldCnt = try! self.resultCnt.value()
+                    oldCnt += data.resultCount
+                    self.resultCnt.onNext(oldCnt)
+                    
+                    
+                case .failure(let error):
+                    print("error : \(error)")
+                }
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                }
+                
+            }
+            
+            
+        }
+    }
 }
