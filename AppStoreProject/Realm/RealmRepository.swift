@@ -82,7 +82,7 @@ class RealmRepository {
         
         let data = realm.objects(AppGenreTable.self)
         
-        var returnData: [GenreItems] = Array(data).map { item in
+        let returnData: [GenreItems] = Array(data).map { item in
             
             let name = item.genreName
             let items = Array(item.appItems.map { AppInfo($0) })
@@ -91,10 +91,30 @@ class RealmRepository {
                 name: name,
                 items: items
             )
+            return newGenres
+        }
+        return returnData
+    }
+    
+    // (앱 검색) 섹션 별 나눠진 앱 리턴
+    func searchGenresApp(_ term: String) -> [GenreItems] {
+        
+        let data = realm.objects(AppGenreTable.self)
+        
+        let returnData: [GenreItems] = Array(data).map { item in
+            
+            let name = item.genreName
+            
+            // 여기서 item 필터링
+            let items = Array(item.appItems.filter { $0.trackName.contains(term) }).map { AppInfo($0) }
+            
+            let newGenres = GenreItems(
+                name: name,
+                items: items
+            )
             
             return newGenres
         }
-        
         return returnData
     }
     

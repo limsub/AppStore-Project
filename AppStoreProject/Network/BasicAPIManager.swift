@@ -27,7 +27,7 @@ class BasicAPIManager {
             guard let txt = term.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return Disposables.create() }
             
             
-            let urlString = "https://itunes.apple.com/search?term=\(txt)&country=KR&media=software&lang=ko_KR&limit=10"
+            let urlString = "https://itunes.apple.com/search?term=\(txt)&country=KR&media=software&lang=ko_KR&limit=30"
             
             guard let url = URL(string: urlString) else {
                 value.onError(APIError.invalidURL) // 에러 전달 -> dispose
