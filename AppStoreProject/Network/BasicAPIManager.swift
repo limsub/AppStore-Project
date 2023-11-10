@@ -46,6 +46,7 @@ class BasicAPIManager {
                 
                 if let data = data, let appData = try? JSONDecoder().decode(SearchAppModel.self , from: data) {
                     value.onNext(appData)
+                    print(appData.results[0])
                 }
             }.resume()
             

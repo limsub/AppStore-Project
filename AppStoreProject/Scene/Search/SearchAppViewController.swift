@@ -58,6 +58,50 @@ class SearchAppViewController: BaseViewController {
     
     func bind() {
         
+        Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(AppInfo.self))
+            .map { return ($0, $1) }
+            .subscribe(with: self) { owner , data in
+                let vc = DetailViewController()
+                vc.viewModel.appInfo = data.1
+                
+                owner.navigationController?.pushViewController(vc, animated: true)
+                owner.tableView.deselectRow(at: data.0, animated: true)
+            }
+            .disposed(by: disposeBag)
+
+        
+        
+        tableView.rx.reachedBottom()
+            .subscribe(with: self) { owner , _ in
+                owner.activityIndicator.startAnimating()
+                
+                owner.offset += 30
+                
+                BasicAPIManager.appendData(owner.searchText, offset: owner.offset) { response in
+                    switch response {
+                    case .success(let data):
+                        var oldData = try! self.items.value()
+                        oldData.append(contentsOf: data.results)
+                        self.items.onNext(oldData)
+                        
+                        var oldCnt = try! self.resultCnt.value()
+                        oldCnt += data.resultCount
+                        self.resultCnt.onNext(oldCnt)
+                        
+                        
+                    case .failure(let error):
+                        print("error : \(error)")
+                    }
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                    }
+                    
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        
+        
         // cellForRowAt
         items
             .bind(to: tableView.rx.items(cellIdentifier: SearchAppTableViewCell.description(), cellType: SearchAppTableViewCell.self)) { (row, element, cell) in
@@ -144,11 +188,14 @@ class SearchAppViewController: BaseViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.hidesNavigationBarDuringPresentation = false
         
-        tableView.delegate = self
+//        tableView.delegate = self
+        
     }
 
 }
 
+
+/*
 extension SearchAppViewController: UITableViewDelegate {
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
@@ -187,3 +234,4 @@ extension SearchAppViewController: UITableViewDelegate {
         }
     }
 }
+*/

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480D58242AFE0BDE007EDAA1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D58232AFE0BDE007EDAA1 /* DetailViewController.swift */; };
+		480D58272AFE0DAC007EDAA1 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 480D58262AFE0DAC007EDAA1 /* Cosmos */; };
+		480D58292AFE13C9007EDAA1 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D58282AFE13C9007EDAA1 /* DetailViewModel.swift */; };
+		480D582D2AFE36EA007EDAA1 /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480D582C2AFE36EA007EDAA1 /* Reactive+Extension.swift */; };
 		48180A8E2AFB571B00192483 /* SearchAppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180A8D2AFB571B00192483 /* SearchAppModel.swift */; };
 		48180A912AFB573B00192483 /* BasicAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180A902AFB573B00192483 /* BasicAPIManager.swift */; };
 		48180A942AFB575600192483 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 48180A932AFB575600192483 /* RxDataSources */; };
@@ -36,6 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		480D58232AFE0BDE007EDAA1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		480D58282AFE13C9007EDAA1 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		480D582C2AFE36EA007EDAA1 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		48180A8D2AFB571B00192483 /* SearchAppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAppModel.swift; sourceTree = "<group>"; };
 		48180A902AFB573B00192483 /* BasicAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAPIManager.swift; sourceTree = "<group>"; };
 		48180AA12AFB58B900192483 /* SearchAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAppViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +73,7 @@
 			files = (
 				48180AB72AFB701300192483 /* Realm in Frameworks */,
 				48180A9A2AFB576700192483 /* RxCocoa in Frameworks */,
+				480D58272AFE0DAC007EDAA1 /* Cosmos in Frameworks */,
 				48180AB92AFB701300192483 /* RealmSwift in Frameworks */,
 				48180A972AFB575E00192483 /* Kingfisher in Frameworks */,
 				48180A9C2AFB576700192483 /* RxSwift in Frameworks */,
@@ -77,6 +85,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		480D58222AFE0BC3007EDAA1 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				480D58232AFE0BDE007EDAA1 /* DetailViewController.swift */,
+				480D58282AFE13C9007EDAA1 /* DetailViewModel.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		480D582B2AFE36E2007EDAA1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				480D582C2AFE36EA007EDAA1 /* Reactive+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		48180A8C2AFB571400192483 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +148,7 @@
 		48180AAF2AFB604800192483 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				480D58222AFE0BC3007EDAA1 /* Detail */,
 				48180AB02AFB605200192483 /* TabBarViewController.swift */,
 				48180ABC2AFB92AA00192483 /* Store */,
 				48180AA02AFB58B000192483 /* Search */,
@@ -167,6 +193,7 @@
 		482EFC152AFB559B008B9B1E /* AppStoreProject */ = {
 			isa = PBXGroup;
 			children = (
+				480D582B2AFE36E2007EDAA1 /* Extension */,
 				48180AB22AFB6FE800192483 /* Realm */,
 				48180AAF2AFB604800192483 /* Scene */,
 				48180AAA2AFB5A1000192483 /* Cell */,
@@ -208,6 +235,7 @@
 				48180A9E2AFB577200192483 /* SnapKit */,
 				48180AB62AFB701300192483 /* Realm */,
 				48180AB82AFB701300192483 /* RealmSwift */,
+				480D58262AFE0DAC007EDAA1 /* Cosmos */,
 			);
 			productName = AppStoreProject;
 			productReference = 482EFC132AFB559B008B9B1E /* AppStoreProject.app */;
@@ -243,6 +271,7 @@
 				48180A982AFB576700192483 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				48180A9D2AFB577200192483 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				48180AB52AFB701300192483 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				480D58252AFE0DAC007EDAA1 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = 482EFC142AFB559B008B9B1E /* Products */;
 			projectDirPath = "";
@@ -272,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48180AB12AFB605200192483 /* TabBarViewController.swift in Sources */,
+				480D58242AFE0BDE007EDAA1 /* DetailViewController.swift in Sources */,
 				482EFC1B2AFB559B008B9B1E /* ViewController.swift in Sources */,
 				482EFC172AFB559B008B9B1E /* AppDelegate.swift in Sources */,
 				482EFC192AFB559B008B9B1E /* SceneDelegate.swift in Sources */,
@@ -282,7 +312,9 @@
 				48180AAE2AFB5A3600192483 /* BaseTableViewCell.swift in Sources */,
 				48180AAC2AFB5A2200192483 /* SearchAppTableViewCell.swift in Sources */,
 				48180AA52AFB58CD00192483 /* BaseViewController.swift in Sources */,
+				480D582D2AFE36EA007EDAA1 /* Reactive+Extension.swift in Sources */,
 				48180AA72AFB593100192483 /* SearchAppViewModel.swift in Sources */,
+				480D58292AFE13C9007EDAA1 /* DetailViewModel.swift in Sources */,
 				48180A912AFB573B00192483 /* BasicAPIManager.swift in Sources */,
 				48180ABB2AFB733900192483 /* RealmRepository.swift in Sources */,
 				48180AB42AFB6FF000192483 /* RealmModel.swift in Sources */,
@@ -508,6 +540,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		480D58252AFE0DAC007EDAA1 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
 		48180A922AFB575600192483 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
@@ -551,6 +591,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		480D58262AFE0DAC007EDAA1 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 480D58252AFE0DAC007EDAA1 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
 		48180A932AFB575600192483 /* RxDataSources */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 48180A922AFB575600192483 /* XCRemoteSwiftPackageReference "RxDataSources" */;
