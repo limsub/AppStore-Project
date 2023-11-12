@@ -43,7 +43,8 @@ class StoreViewController: BaseViewController {
     func bindInputOutput() {
         let input = StoreViewModel.Input(
             searchText: searchController.searchBar.rx.text.orEmpty,
-            refreshControlValueChanged: refreshControl.rx.controlEvent(.valueChanged)
+            refreshControlValueChanged: refreshControl.rx.controlEvent(.valueChanged),
+            deleteItemSoReloadData: BehaviorSubject(value: false)
         )
         
         let output = viewModel.transform(input)
@@ -52,7 +53,35 @@ class StoreViewController: BaseViewController {
         let dataSource = RxTableViewSectionedReloadDataSource<GenreItems> { dataSource, tableView, indexPath , item  in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoreCell", for: indexPath) as? SearchAppTableViewCell else { return UITableViewCell() }
     
-            cell.designCell(item, isDownloadedFirst: false)
+            cell.designCell(item, isDownloadedFirst: true)
+            
+            cell.downloadButton.rx.tap
+                .subscribe(with: self) { owner , _ in
+                    print("hihihi")
+                    
+                    // 일단 모두 삭제 라고 써있긴 할테지만
+                    // 이게 진짜 렘에 있는 데이터인지 확인하는 과정 필요 (새로고침 하기 전까진 최신 데이터가 아니다)
+                    let isDownloaded = owner.repository.checkDownload(AppItemTable(item))
+                    
+                    if !isDownloaded {
+                        // 얼럿 띄워줘야 함. "이미 삭제된 앱입니다"
+                        owner.showSingleAlert("이미 삭제된 앱입니다", message: "새로고침 해보세용")
+                    } else {
+                        // 렘에서 삭제해줌
+                        owner.repository.deleteApp(item: AppItemTable(item))
+                        
+                        // 값 토글
+                        var v = try! input.deleteItemSoReloadData.value()
+                        v.toggle()
+                        input.deleteItemSoReloadData.onNext(v)
+                        
+                    }
+                    
+                    
+                    
+                    
+                }
+                .disposed(by: cell.disposeBag)
             
             return cell
         }

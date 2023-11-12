@@ -32,6 +32,7 @@
 		48180ABE2AFB92D600192483 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180ABD2AFB92D600192483 /* StoreViewController.swift */; };
 		48180AC02AFB930500192483 /* GenreItemStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48180ABF2AFB930500192483 /* GenreItemStruct.swift */; };
 		482157072B006DFC00E2A66D /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482157062B006DFC00E2A66D /* StoreViewModel.swift */; };
+		482157092B0074E000E2A66D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482157082B0074E000E2A66D /* UIViewController+Extension.swift */; };
 		482EFC172AFB559B008B9B1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482EFC162AFB559B008B9B1E /* AppDelegate.swift */; };
 		482EFC192AFB559B008B9B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482EFC182AFB559B008B9B1E /* SceneDelegate.swift */; };
 		482EFC1B2AFB559B008B9B1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482EFC1A2AFB559B008B9B1E /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 		48180ABD2AFB92D600192483 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		48180ABF2AFB930500192483 /* GenreItemStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreItemStruct.swift; sourceTree = "<group>"; };
 		482157062B006DFC00E2A66D /* StoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
+		482157082B0074E000E2A66D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		482EFC132AFB559B008B9B1E /* AppStoreProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		482EFC162AFB559B008B9B1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		482EFC182AFB559B008B9B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				480D582C2AFE36EA007EDAA1 /* Reactive+Extension.swift */,
+				482157082B0074E000E2A66D /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				480D58292AFE13C9007EDAA1 /* DetailViewModel.swift in Sources */,
 				48180A912AFB573B00192483 /* BasicAPIManager.swift in Sources */,
 				48180ABB2AFB733900192483 /* RealmRepository.swift in Sources */,
+				482157092B0074E000E2A66D /* UIViewController+Extension.swift in Sources */,
 				48180AB42AFB6FF000192483 /* RealmModel.swift in Sources */,
 				48180AA92AFB596700192483 /* ViewModelType.swift in Sources */,
 			);

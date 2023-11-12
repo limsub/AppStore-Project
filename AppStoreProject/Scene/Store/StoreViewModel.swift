@@ -18,6 +18,7 @@ class StoreViewModel: ViewModelType {
     struct Input {
         let searchText: ControlProperty<String>     // searchBar.rx.text.orEmpty
         let refreshControlValueChanged: ControlEvent<Void>  // refreshControl.rx.controlEvent(.valueChanged)
+        let deleteItemSoReloadData: BehaviorSubject<Bool>
     }
     struct Output {
         let items: BehaviorSubject<[GenreItems]>
@@ -28,6 +29,10 @@ class StoreViewModel: ViewModelType {
         
         let items = BehaviorSubject<[GenreItems]>(value: [])
         let refreshLoading = BehaviorSubject<Bool>(value: false)
+        
+        // 맨 처음 items는 모든 데이터를 보여줌
+        let wholeData = repository.allGenresApp()
+        items.onNext(wholeData)
         
         // 검색 문자열에 따라 items 변경. 빈 문자열인 경우, 모든 데이터 넘겨줌
         input.searchText
@@ -58,7 +63,18 @@ class StoreViewModel: ViewModelType {
                 }
             }
             .disposed(by: disposeBag)
-            
+        
+        // 데이터를 삭제했기 때문에 렘에서 데이터를 다시 로드해야 한다
+        input.deleteItemSoReloadData
+            .withLatestFrom(input.searchText) { _, text in
+                return text
+            }
+            .subscribe(with: self) { owner , value in
+                print("데이터 삭제했기 때문에 다시 데이터 로드")
+                let newData = (value == "") ? owner.repository.allGenresApp() : owner.repository.searchGenresApp(value)
+                items.onNext(newData)
+            }
+            .disposed(by: disposeBag)
         
         
         return Output(
