@@ -42,7 +42,7 @@ class StoreViewController: BaseViewController {
         let dataSource = RxTableViewSectionedReloadDataSource<GenreItems> { dataSource, tableView, indexPath , item  in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoreCell", for: indexPath) as? SearchAppTableViewCell else { return UITableViewCell() }
     
-            cell.designCell(item)
+            cell.designCell(item, isDownloadedFirst: false)
             
             return cell
         }

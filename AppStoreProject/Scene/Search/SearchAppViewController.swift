@@ -76,20 +76,42 @@ class SearchAppViewController: BaseViewController {
                 
                 self.activityIndicator.stopAnimating()
                 
-                cell.designCell(element)
+                let isDownloadedFirst = self.repository.checkDownload(AppItemTable(element))
+                cell.designCell(element, isDownloadedFirst: isDownloadedFirst)
+                
+                
                 
                 cell.downloadButton.rx.tap
-                    .subscribe(with: self) { owner , _ in
-                        if !cell.isDownloaded {
-                            print("추가")
+                    .bind(with: self) { owner , _ in
+                        
+                        // 렘에 저장된 데이터인지 여부 체크
+                        let isDownloaded = owner.repository.checkDownload(AppItemTable(element))
+                        
+                        if !isDownloaded {
+                            print("추가함")
                             owner.repository.addApp(element.genres[0], item: AppItemTable(element))
                         } else {
-                            print("삭제")
+                            print("삭제함")
                             owner.repository.deleteApp(item: AppItemTable(element))
                         }
-                        cell.isDownloaded.toggle()
+                        
+                        // 추가 또는 삭제가 완료되었으면 UI 업데이트
+                        cell.downloadButton.setTitle(isDownloaded ? "받기" : "삭제", for: .normal)
                     }
                     .disposed(by: cell.disposeBag)
+                
+//                cell.downloadButton.rx.tap
+//                    .subscribe(with: self) { owner , _ in
+//                        if !cell.isDownloaded {
+//                            print("추가")
+//                            owner.repository.addApp(element.genres[0], item: AppItemTable(element))
+//                        } else {
+//                            print("삭제")
+//                            owner.repository.deleteApp(item: AppItemTable(element))
+//                        }
+//                        cell.isDownloaded.toggle()
+//                    }
+//                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
         

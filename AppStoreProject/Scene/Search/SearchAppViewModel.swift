@@ -19,8 +19,10 @@ class SearchAppViewModel: ViewModelType {
         let searchButtonClicked: ControlEvent<Void> // searchBar.rx.searchButtonClicked
         let searchText: ControlProperty<String> // searchBar.rx.text.orEmpty
         let tableViewReachedBottom: ControlEvent<Void> // tableView.rx.reachedBottom
-
         let tableViewItemSelected: Observable<(ControlEvent<IndexPath>.Element, ControlEvent<AppInfo>.Element)>
+        
+        
+
     }
 
 
@@ -30,6 +32,7 @@ class SearchAppViewModel: ViewModelType {
         let tableViewItemSelected: Observable<(ControlEvent<IndexPath>.Element, ControlEvent<AppInfo>.Element)>
         let tableViewReachedBottom: ControlEvent<Void> // tableView.rx.reachedBottom
 //        let nextData: PublishSubject<AppInfo>
+       
     }
 
 
