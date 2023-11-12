@@ -29,16 +29,26 @@ class StoreViewController: BaseViewController {
     
     let repository = RealmRepository()
     
-    let refreshLoading = BehaviorRelay(value: false)
+    let viewModel = StoreViewModel()
     
-    let a = BehaviorSubject<[GenreItems]>(value: [])
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let data = repository.allGenresApp()
         
+        bindInputOutput()
+    }
+    
+    func bindInputOutput() {
+        let input = StoreViewModel.Input(
+            searchText: searchController.searchBar.rx.text.orEmpty,
+            refreshControlValueChanged: refreshControl.rx.controlEvent(.valueChanged)
+        )
+        
+        let output = viewModel.transform(input)
+        
+        // 테이블뷰 데이터 세팅
         let dataSource = RxTableViewSectionedReloadDataSource<GenreItems> { dataSource, tableView, indexPath , item  in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoreCell", for: indexPath) as? SearchAppTableViewCell else { return UITableViewCell() }
     
@@ -50,66 +60,20 @@ class StoreViewController: BaseViewController {
         dataSource.titleForHeaderInSection = { dataSource, index in
             // 데이터가 없는 섹션은 아예 헤더도 없애버림
             if dataSource.sectionModels[index].items.isEmpty { return nil }
-        
             return dataSource.sectionModels[index].name
         }
         
-        
-        
-//        Observable.just(data)
-        
-        a.onNext(data)
-        a
+        output.items
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
         
-        bind()
-        refreshBind()
-    }
-    
-    func bind() {
         
-        searchController.searchBar.rx.text.orEmpty
-            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
-            .distinctUntilChanged()
-            .subscribe(with: self) { owner , value  in
-                print("===실시간 검색===\(value)")
-                
-                // 빈 문자열이면 저장된 모든 데이터를 보여주자
-                let newData = (value == "") ? owner.repository.allGenresApp() : owner.repository.searchGenresApp(value)
-                owner.a.onNext(newData)
-            }
-            .disposed(by: disposeBag)
-    }
-    
-    func refreshBind() {
-        
-        refreshControl.rx.controlEvent(.valueChanged)
-            .withLatestFrom(searchController.searchBar.rx.text.orEmpty, resultSelector: { _, text in
-                return text
-            })
-            .bind(with: self , onNext: { owner , text in
-                print("refresh value change")
-                owner.refreshLoading.accept(true)
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    owner.refreshLoading.accept(false)
-                    
-                    print("===땡겨서 실시간 검색===\(text)")
-                    
-                    // 빈 문자열이면 저장된 모든 데이터를 보여주자
-                    let newData = (text == "") ? owner.repository.allGenresApp() : owner.repository.searchGenresApp(text)
-                    owner.a.onNext(newData)
-                }
-            })
-            .disposed(by: disposeBag)
-            
-        
-        refreshLoading
+        output.refreshLoading
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
     }
+
     
     override func setConfigure() {
         super.setConfigure()
