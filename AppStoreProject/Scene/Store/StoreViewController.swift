@@ -96,8 +96,6 @@ class StoreViewController: BaseViewController {
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        
-        
         output.refreshLoading
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)

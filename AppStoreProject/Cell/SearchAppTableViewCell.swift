@@ -13,12 +13,7 @@ import RxCocoa
 
 class SearchAppTableViewCell: BaseTableViewCell {
     
-    let iconImageView = {
-        let view = UIImageView()
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 10
-        return view
-    }()
+    let iconImageView = CustomView.makeIconImageView()
     
     let nameLabel = {
         let view = UILabel()
@@ -34,14 +29,7 @@ class SearchAppTableViewCell: BaseTableViewCell {
         return view
     }()
     
-    let downloadButton = {
-        let view = UIButton()
-        view.setTitle("받기", for: .normal)
-        view.backgroundColor = .lightGray
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 10
-        return view
-    }()
+    let downloadButton = CustomView.makeDownloadButton()
     
     
     var disposeBag = DisposeBag()

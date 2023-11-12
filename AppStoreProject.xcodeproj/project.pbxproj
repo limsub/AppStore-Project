@@ -39,6 +39,11 @@
 		482EFC1E2AFB559B008B9B1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482EFC1C2AFB559B008B9B1E /* Main.storyboard */; };
 		482EFC202AFB559C008B9B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482EFC1F2AFB559C008B9B1E /* Assets.xcassets */; };
 		482EFC232AFB559C008B9B1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482EFC212AFB559C008B9B1E /* LaunchScreen.storyboard */; };
+		48EB4DBC2B00C6260033C4C0 /* CustomTopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4DBB2B00C6260033C4C0 /* CustomTopDetailView.swift */; };
+		48EB4DBE2B00C63D0033C4C0 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4DBD2B00C63D0033C4C0 /* BaseView.swift */; };
+		48EB4DC12B00C7C40033C4C0 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4DC02B00C7C40033C4C0 /* CustomView.swift */; };
+		48EB4DC32B00F48B0033C4C0 /* CustomMiddleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4DC22B00F48B0033C4C0 /* CustomMiddleDetailView.swift */; };
+		48EB4DC62B00FC3D0033C4C0 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4DC52B00FC3D0033C4C0 /* WriteReviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +73,11 @@
 		482EFC1F2AFB559C008B9B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		482EFC222AFB559C008B9B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		482EFC242AFB559C008B9B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48EB4DBB2B00C6260033C4C0 /* CustomTopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopDetailView.swift; sourceTree = "<group>"; };
+		48EB4DBD2B00C63D0033C4C0 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		48EB4DC02B00C7C40033C4C0 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		48EB4DC22B00F48B0033C4C0 /* CustomMiddleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMiddleDetailView.swift; sourceTree = "<group>"; };
+		48EB4DC52B00FC3D0033C4C0 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,9 @@
 			children = (
 				480D58232AFE0BDE007EDAA1 /* DetailViewController.swift */,
 				480D58282AFE13C9007EDAA1 /* DetailViewModel.swift */,
+				48EB4DBB2B00C6260033C4C0 /* CustomTopDetailView.swift */,
+				48EB4DC22B00F48B0033C4C0 /* CustomMiddleDetailView.swift */,
+				48EB4DC42B00FC220033C4C0 /* Review */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -138,6 +151,7 @@
 				48180AA42AFB58CD00192483 /* BaseViewController.swift */,
 				48180AA82AFB596700192483 /* ViewModelType.swift */,
 				48180AAD2AFB5A3600192483 /* BaseTableViewCell.swift */,
+				48EB4DBD2B00C63D0033C4C0 /* BaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -153,8 +167,8 @@
 		48180AAF2AFB604800192483 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				480D58222AFE0BC3007EDAA1 /* Detail */,
 				48180AB02AFB605200192483 /* TabBarViewController.swift */,
+				480D58222AFE0BC3007EDAA1 /* Detail */,
 				48180ABC2AFB92AA00192483 /* Store */,
 				48180AA02AFB58B000192483 /* Search */,
 			);
@@ -199,6 +213,7 @@
 		482EFC152AFB559B008B9B1E /* AppStoreProject */ = {
 			isa = PBXGroup;
 			children = (
+				48EB4DBF2B00C7AB0033C4C0 /* CustomViewFunc */,
 				480D582B2AFE36E2007EDAA1 /* Extension */,
 				48180AB22AFB6FE800192483 /* Realm */,
 				48180AAF2AFB604800192483 /* Scene */,
@@ -215,6 +230,22 @@
 				482EFC242AFB559C008B9B1E /* Info.plist */,
 			);
 			path = AppStoreProject;
+			sourceTree = "<group>";
+		};
+		48EB4DBF2B00C7AB0033C4C0 /* CustomViewFunc */ = {
+			isa = PBXGroup;
+			children = (
+				48EB4DC02B00C7C40033C4C0 /* CustomView.swift */,
+			);
+			path = CustomViewFunc;
+			sourceTree = "<group>";
+		};
+		48EB4DC42B00FC220033C4C0 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				48EB4DC52B00FC3D0033C4C0 /* WriteReviewViewController.swift */,
+			);
+			path = Review;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,18 +346,23 @@
 				48180AC02AFB930500192483 /* GenreItemStruct.swift in Sources */,
 				48180ABE2AFB92D600192483 /* StoreViewController.swift in Sources */,
 				482157072B006DFC00E2A66D /* StoreViewModel.swift in Sources */,
+				48EB4DC12B00C7C40033C4C0 /* CustomView.swift in Sources */,
 				48180AA22AFB58B900192483 /* SearchAppViewController.swift in Sources */,
 				48180AAE2AFB5A3600192483 /* BaseTableViewCell.swift in Sources */,
 				48180AAC2AFB5A2200192483 /* SearchAppTableViewCell.swift in Sources */,
 				48180AA52AFB58CD00192483 /* BaseViewController.swift in Sources */,
+				48EB4DC62B00FC3D0033C4C0 /* WriteReviewViewController.swift in Sources */,
 				480D582D2AFE36EA007EDAA1 /* Reactive+Extension.swift in Sources */,
 				48180AA72AFB593100192483 /* SearchAppViewModel.swift in Sources */,
 				480D58292AFE13C9007EDAA1 /* DetailViewModel.swift in Sources */,
 				48180A912AFB573B00192483 /* BasicAPIManager.swift in Sources */,
 				48180ABB2AFB733900192483 /* RealmRepository.swift in Sources */,
 				482157092B0074E000E2A66D /* UIViewController+Extension.swift in Sources */,
+				48EB4DBE2B00C63D0033C4C0 /* BaseView.swift in Sources */,
 				48180AB42AFB6FF000192483 /* RealmModel.swift in Sources */,
+				48EB4DBC2B00C6260033C4C0 /* CustomTopDetailView.swift in Sources */,
 				48180AA92AFB596700192483 /* ViewModelType.swift in Sources */,
+				48EB4DC32B00F48B0033C4C0 /* CustomMiddleDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
