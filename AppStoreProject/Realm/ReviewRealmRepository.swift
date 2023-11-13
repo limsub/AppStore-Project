@@ -14,7 +14,7 @@ class ReviewRealmRepository {
     
     
     // (C) 1. 앱에 대한 리뷰 등록
-    func addReview(_ trackId: Int, review: ReviewItemTable) {
+    func createReview(_ trackId: Int, review: ReviewItemTable) {
         
         // 렘에 이미 있는 앱인지 확인
         let data = realm.objects(AppReviewTable.self).where {
@@ -47,5 +47,17 @@ class ReviewRealmRepository {
             }
         }
         
+    }
+    
+    // (R) 2. 앱에 대한 리뷰 불러오기
+    func readReview(_ trackId: Int) -> [ReviewItemTable] {
+        let app = realm.objects(AppReviewTable.self).where {
+            $0.trackId == trackId
+        }
+        if app.isEmpty { return [] }
+        
+        if app[0].appReviews.isEmpty { return [] }
+        
+        return Array(app[0].appReviews)
     }
 }

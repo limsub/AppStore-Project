@@ -62,7 +62,7 @@ class WriteReviewViewModel: ViewModelType {
             }
             .subscribe(with: self) { owner , tuple in
                 if tuple.0 {
-                    owner.repository.addReview(
+                    owner.repository.createReview(
                         owner.appInfo!.trackId,
                         review: tuple.1
                     )

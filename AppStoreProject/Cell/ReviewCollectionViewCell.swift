@@ -64,7 +64,7 @@ class ReviewCollectionViewCell: BaseCollectionViewCell {
         
         dateLabel.snp.makeConstraints { make in
             make.trailing.top.equalTo(contentView).inset(16)
-            make.width.equalTo(70)
+            make.width.equalTo(100)
         }
         titleLabel.snp.makeConstraints { make in
             make.leading.top.equalTo(contentView).inset(16)

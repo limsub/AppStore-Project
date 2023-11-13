@@ -43,15 +43,7 @@ class DetailViewController: BaseViewController {
         
         return layout
     }
-    
-
-    let items = BehaviorSubject(value: [
-        ReviewItemTable(title: "1", rate: 1.0, content: "asad", date: "1월 2일"),
-        ReviewItemTable(title: "1", rate: 1.0, content: "asad", date: "1월 2일"),
-        ReviewItemTable(title: "1", rate: 1.0, content: "asad", date: "1월 2일"),
-        ReviewItemTable(title: "1", rate: 1.0, content: "asad", date: "1월 2일")
-    ])
-    
+        
     let disposeBag = DisposeBag()
     
     
@@ -82,14 +74,12 @@ class DetailViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         
-        items
+        output.reviewItems
             .bind(to: collectionView.rx.items(cellIdentifier: ReviewCollectionViewCell.description(), cellType: ReviewCollectionViewCell.self)) { (index, element, cell) in
                 
                 cell.designCell(element)
                 
                 print(index, element, cell)
-                
-                
             }
             .disposed(by: disposeBag)
         
