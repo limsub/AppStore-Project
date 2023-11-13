@@ -49,7 +49,7 @@ class WriteReviewViewModel: ViewModelType {
         
         // 2. sendButton이 눌리면 validation 확인 후 Realm에 올려줌
         let newItemObservable = Observable.combineLatest(input.rate, input.titleText, input.contentText) {
-            return ReviewItemTable(title: $1, rate: $0, content: $2, date: "1월 2일")
+            return ReviewItemTable(title: $1, rate: $0, content: $2, date: Date().toString(of: .koreanText))
         }
   
         
