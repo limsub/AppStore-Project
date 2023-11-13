@@ -39,6 +39,10 @@
 		482EFC1E2AFB559B008B9B1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482EFC1C2AFB559B008B9B1E /* Main.storyboard */; };
 		482EFC202AFB559C008B9B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482EFC1F2AFB559C008B9B1E /* Assets.xcassets */; };
 		482EFC232AFB559C008B9B1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482EFC212AFB559C008B9B1E /* LaunchScreen.storyboard */; };
+		489B7A8C2B01F3FD0085B23E /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B7A8B2B01F3FD0085B23E /* ReviewCollectionViewCell.swift */; };
+		489B7A8E2B01F4140085B23E /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B7A8D2B01F4140085B23E /* BaseCollectionViewCell.swift */; };
+		489B7A902B01F8100085B23E /* ReviewItemStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B7A8F2B01F8100085B23E /* ReviewItemStruct.swift */; };
+		489B7A922B01F8AD0085B23E /* ReviewRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B7A912B01F8AD0085B23E /* ReviewRealmModel.swift */; };
 		48EB4DBC2B00C6260033C4C0 /* CustomTopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4DBB2B00C6260033C4C0 /* CustomTopDetailView.swift */; };
 		48EB4DBE2B00C63D0033C4C0 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4DBD2B00C63D0033C4C0 /* BaseView.swift */; };
 		48EB4DC12B00C7C40033C4C0 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4DC02B00C7C40033C4C0 /* CustomView.swift */; };
@@ -73,6 +77,10 @@
 		482EFC1F2AFB559C008B9B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		482EFC222AFB559C008B9B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		482EFC242AFB559C008B9B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		489B7A8B2B01F3FD0085B23E /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		489B7A8D2B01F4140085B23E /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		489B7A8F2B01F8100085B23E /* ReviewItemStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemStruct.swift; sourceTree = "<group>"; };
+		489B7A912B01F8AD0085B23E /* ReviewRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRealmModel.swift; sourceTree = "<group>"; };
 		48EB4DBB2B00C6260033C4C0 /* CustomTopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopDetailView.swift; sourceTree = "<group>"; };
 		48EB4DBD2B00C63D0033C4C0 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		48EB4DC02B00C7C40033C4C0 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
@@ -152,6 +160,7 @@
 				48180AA82AFB596700192483 /* ViewModelType.swift */,
 				48180AAD2AFB5A3600192483 /* BaseTableViewCell.swift */,
 				48EB4DBD2B00C63D0033C4C0 /* BaseView.swift */,
+				489B7A8D2B01F4140085B23E /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -160,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				48180AAB2AFB5A2200192483 /* SearchAppTableViewCell.swift */,
+				489B7A8B2B01F3FD0085B23E /* ReviewCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -180,6 +190,7 @@
 			children = (
 				48180AB32AFB6FF000192483 /* RealmModel.swift */,
 				48180ABA2AFB733900192483 /* RealmRepository.swift */,
+				489B7A912B01F8AD0085B23E /* ReviewRealmModel.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -244,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				48EB4DC52B00FC3D0033C4C0 /* WriteReviewViewController.swift */,
+				489B7A8F2B01F8100085B23E /* ReviewItemStruct.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -338,6 +350,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				48180AB12AFB605200192483 /* TabBarViewController.swift in Sources */,
+				489B7A902B01F8100085B23E /* ReviewItemStruct.swift in Sources */,
+				489B7A8E2B01F4140085B23E /* BaseCollectionViewCell.swift in Sources */,
 				480D58242AFE0BDE007EDAA1 /* DetailViewController.swift in Sources */,
 				482EFC1B2AFB559B008B9B1E /* ViewController.swift in Sources */,
 				482EFC172AFB559B008B9B1E /* AppDelegate.swift in Sources */,
@@ -352,10 +366,12 @@
 				48180AAC2AFB5A2200192483 /* SearchAppTableViewCell.swift in Sources */,
 				48180AA52AFB58CD00192483 /* BaseViewController.swift in Sources */,
 				48EB4DC62B00FC3D0033C4C0 /* WriteReviewViewController.swift in Sources */,
+				489B7A922B01F8AD0085B23E /* ReviewRealmModel.swift in Sources */,
 				480D582D2AFE36EA007EDAA1 /* Reactive+Extension.swift in Sources */,
 				48180AA72AFB593100192483 /* SearchAppViewModel.swift in Sources */,
 				480D58292AFE13C9007EDAA1 /* DetailViewModel.swift in Sources */,
 				48180A912AFB573B00192483 /* BasicAPIManager.swift in Sources */,
+				489B7A8C2B01F3FD0085B23E /* ReviewCollectionViewCell.swift in Sources */,
 				48180ABB2AFB733900192483 /* RealmRepository.swift in Sources */,
 				482157092B0074E000E2A66D /* UIViewController+Extension.swift in Sources */,
 				48EB4DBE2B00C63D0033C4C0 /* BaseView.swift in Sources */,

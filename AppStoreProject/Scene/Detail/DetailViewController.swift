@@ -22,16 +22,35 @@ class DetailViewController: BaseViewController {
     let middleView = CustomMiddleDetailView()
     let seperateLine2 = CustomView.makeSeperateLine()
     
-    
-    
-    let cosmosView = {
-        let view = CosmosView()
-        view.settings.fillMode = .half
-        view.settings.starSize = 50
-        view.rating = 0
-        view.settings.minTouchRating = 0.5
+    lazy var collectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.createReviewLayout())
+        view.register(ReviewCollectionViewCell.self , forCellWithReuseIdentifier: ReviewCollectionViewCell.description())
+        
         return view
     }()
+    
+    func createReviewLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        let width = UIScreen.main.bounds.width - 36
+        
+        layout.itemSize = CGSize(width: width, height: 200)
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 24, right: 16)
+        layout.minimumLineSpacing = 16
+        layout.minimumInteritemSpacing = 16
+        
+        layout.scrollDirection = .horizontal
+        
+        
+        return layout
+    }
+    
+
+    let items = BehaviorSubject(value: [
+        ReviewItemTable(title: "1", rate: 1.0, content: "asad", date: "1월 2일"),
+        ReviewItemTable(title: "1", rate: 1.0, content: "asad", date: "1월 2일"),
+        ReviewItemTable(title: "1", rate: 1.0, content: "asad", date: "1월 2일"),
+        ReviewItemTable(title: "1", rate: 1.0, content: "asad", date: "1월 2일")
+    ])
     
     let disposeBag = DisposeBag()
     
@@ -61,11 +80,16 @@ class DetailViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         
-
-        cosmosView.rx.didFinishTouchingCosmos.onNext { value in
-            print(value)
-        }
+        items
+            .bind(to: collectionView.rx.items(cellIdentifier: ReviewCollectionViewCell.description(), cellType: ReviewCollectionViewCell.self)) { (index, element, cell) in
+                
+                cell.designCell(element)
+                
+                print(index, element, cell)
+            }
+            .disposed(by: disposeBag)
     }
+    
     
     
     
@@ -76,9 +100,8 @@ class DetailViewController: BaseViewController {
         view.addSubview(seperateLine)
         view.addSubview(middleView)
         view.addSubview(seperateLine2)
+        view.addSubview(collectionView)
         
-        
-        view.addSubview(cosmosView)
     }
     override func setConstraints() {
         super.setConstraints()
@@ -103,10 +126,12 @@ class DetailViewController: BaseViewController {
             make.height.equalTo(1)
             make.horizontalEdges.equalTo(view).inset(18)
         }
-        
-        cosmosView.snp.makeConstraints { make in
-            make.center.equalTo(view)
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(seperateLine2.snp.bottom).offset(18)
+            make.horizontalEdges.equalTo(view)
+            make.height.equalTo(200)
         }
+        
     }
     override func setting() {
         super.setting()
