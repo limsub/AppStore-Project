@@ -15,7 +15,6 @@ class WriteReviewViewController: BaseViewController {
     let cancelButton = UIBarButtonItem(title: "취소")
     let sendButton = UIBarButtonItem(title: "보내기")
     
-    
     let cosmosView = {
         let view = CosmosView()
         view.settings.fillMode = .half
@@ -51,10 +50,16 @@ class WriteReviewViewController: BaseViewController {
     }()
     
     
+    
+    let disposeBag = DisposeBag()
+    
+    let viewModel = WriteReviewViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavigation()
+        bind()
     }
     override func setConfigure() {
         super.setConfigure()
@@ -107,4 +112,30 @@ class WriteReviewViewController: BaseViewController {
         title = "리뷰 작성하기"
     }
     
+    func bind() {
+        
+        let rate = BehaviorSubject(value: 0.0)
+        cosmosView.rx.didFinishTouchingCosmos.onNext { value in
+            rate.onNext(value)
+        }
+        
+        let input = WriteReviewViewModel.Input(
+                  rate: rate,
+                  titleText: titleTextField.rx.text.orEmpty,
+                  contentText: contentTextView.rx.text.orEmpty,
+                  sendButtonClicked: sendButton.rx.tap
+        )
+        
+        let output = viewModel.transform(input)
+        
+        output.reviewValidation
+            .bind(to: sendButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        output.sendButtonClicked
+            .subscribe(with: self) { owner , _ in
+                owner.dismiss(animated: true)
+            }
+            .disposed(by: disposeBag)
+    }
 }

@@ -74,7 +74,9 @@ class DetailViewController: BaseViewController {
         output.reviewButtonClicked
             .subscribe(with: self) { owner , _ in
                 print("버튼 클릭드")
-                let nav = UINavigationController(rootViewController: WriteReviewViewController())
+                let vc = WriteReviewViewController()
+                vc.viewModel.appInfo = owner.viewModel.appInfo
+                let nav = UINavigationController(rootViewController: vc)
                 owner.present(nav, animated: true)
             }
             .disposed(by: disposeBag)
@@ -86,8 +88,13 @@ class DetailViewController: BaseViewController {
                 cell.designCell(element)
                 
                 print(index, element, cell)
+                
+                
             }
             .disposed(by: disposeBag)
+        
+        
+        
     }
     
     
