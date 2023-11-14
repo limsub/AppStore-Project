@@ -19,10 +19,12 @@ class StoreViewModel: ViewModelType {
         let searchText: ControlProperty<String>     // searchBar.rx.text.orEmpty
         let refreshControlValueChanged: ControlEvent<Void>  // refreshControl.rx.controlEvent(.valueChanged)
         let deleteItemSoReloadData: BehaviorSubject<Bool>
+        let tableViewItemSelected: Observable<(ControlEvent<IndexPath>.Element, ControlEvent<AppInfo>.Element)>
     }
     struct Output {
         let items: BehaviorSubject<[GenreItems]>
         let refreshLoading: BehaviorSubject<Bool>
+        let tableViewItemSelected: Observable<(ControlEvent<IndexPath>.Element, ControlEvent<AppInfo>.Element)>
     }
     
     func transform(_ input: Input) -> Output {
@@ -79,7 +81,8 @@ class StoreViewModel: ViewModelType {
         
         return Output(
             items: items,
-            refreshLoading: refreshLoading
+            refreshLoading: refreshLoading,
+            tableViewItemSelected: input.tableViewItemSelected
         )
     }
 }

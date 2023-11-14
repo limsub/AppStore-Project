@@ -11,22 +11,19 @@ class TabBarViewController: UITabBarController {
     
     let searchVC = SearchAppViewController()
     
-    let homeVC = SearchAppViewController()
-    
-    let saveVC = StoreViewController()
+    let storeVC = StoreViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        [searchVC, homeVC, saveVC].forEach { vc in
+        [searchVC, storeVC].forEach { vc in
             vc.tabBarItem.image = UIImage(systemName: "pencil")
         }
         
         let navSearchVC = UINavigationController(rootViewController: searchVC)
-        let navHomeVC = UINavigationController(rootViewController: homeVC)
-        let navSaveVC = UINavigationController(rootViewController: saveVC)
+        let navStoreVC = UINavigationController(rootViewController: storeVC)
         
-        let tabItem = [navSearchVC, navHomeVC, navSaveVC ]
+        let tabItem = [navSearchVC, navStoreVC ]
         
         tabBar.backgroundColor = .lightGray
         

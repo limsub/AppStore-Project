@@ -44,7 +44,8 @@ class StoreViewController: BaseViewController {
         let input = StoreViewModel.Input(
             searchText: searchController.searchBar.rx.text.orEmpty,
             refreshControlValueChanged: refreshControl.rx.controlEvent(.valueChanged),
-            deleteItemSoReloadData: BehaviorSubject(value: false)
+            deleteItemSoReloadData: BehaviorSubject(value: false),
+            tableViewItemSelected: Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(AppInfo.self))
         )
         
         let output = viewModel.transform(input)
@@ -98,6 +99,17 @@ class StoreViewController: BaseViewController {
         
         output.refreshLoading
             .bind(to: refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+        
+        // 화면 전환
+        output.tableViewItemSelected
+            .subscribe(with: self) { owner , value in
+                let vc = DetailViewController()
+                vc.viewModel.appInfo = value.1
+                
+                owner.navigationController?.pushViewController(vc, animated: true)
+                owner.tableView.deselectRow(at: value.0, animated: true)
+            }
             .disposed(by: disposeBag)
     }
 
