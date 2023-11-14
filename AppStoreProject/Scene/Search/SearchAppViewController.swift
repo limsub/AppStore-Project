@@ -99,19 +99,6 @@ class SearchAppViewController: BaseViewController {
                         cell.downloadButton.setTitle(isDownloaded ? "받기" : "삭제", for: .normal)
                     }
                     .disposed(by: cell.disposeBag)
-                
-//                cell.downloadButton.rx.tap
-//                    .subscribe(with: self) { owner , _ in
-//                        if !cell.isDownloaded {
-//                            print("추가")
-//                            owner.repository.addApp(element.genres[0], item: AppItemTable(element))
-//                        } else {
-//                            print("삭제")
-//                            owner.repository.deleteApp(item: AppItemTable(element))
-//                        }
-//                        cell.isDownloaded.toggle()
-//                    }
-//                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
         

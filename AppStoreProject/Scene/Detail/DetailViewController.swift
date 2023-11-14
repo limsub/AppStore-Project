@@ -53,12 +53,16 @@ class DetailViewController: BaseViewController {
         bind()
         topView.designView(viewModel.appInfo!)
         middleView.designView(viewModel.appInfo!)
+        
+        
+        
     }
     
     func bind() {
         
         let input = DetailViewModel.Input(
-            reviewButtonClicked: middleView.reviewButton.rx.tap
+            reviewButtonClicked: middleView.reviewButton.rx.tap,
+            downloadButtonClicked: topView.downloadButton.rx.tap
         )
         
         let output = viewModel.transform(input)
@@ -84,7 +88,15 @@ class DetailViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         
-        
+        output.isDownload
+            .subscribe(with: self) { owner , value in
+                print("버튼 타이틀 변경")
+                owner.topView.downloadButton.setTitle(
+                    (value) ? "삭제" : "받기",
+                    for: .normal
+                )
+            }
+            .disposed(by: disposeBag)
     }
     
     
