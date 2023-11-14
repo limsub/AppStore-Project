@@ -58,6 +58,12 @@ class SearchAppViewController: BaseViewController {
         bindInputOutput()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
     func bindInputOutput() {
         
         let input = SearchAppViewModel.Input(
@@ -77,6 +83,9 @@ class SearchAppViewController: BaseViewController {
                 
                 let isDownloadedFirst = self.repository.checkDownload(AppItemTable(element))
                 cell.designCell(element, isDownloadedFirst: isDownloadedFirst)
+                
+                
+                
                 
                 
                 

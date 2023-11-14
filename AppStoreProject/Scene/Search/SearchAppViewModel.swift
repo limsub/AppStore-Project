@@ -20,9 +20,6 @@ class SearchAppViewModel: ViewModelType {
         let searchText: ControlProperty<String> // searchBar.rx.text.orEmpty
         let tableViewReachedBottom: ControlEvent<Void> // tableView.rx.reachedBottom
         let tableViewItemSelected: Observable<(ControlEvent<IndexPath>.Element, ControlEvent<AppInfo>.Element)>
-        
-        
-
     }
 
 

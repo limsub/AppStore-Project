@@ -120,6 +120,39 @@ class RealmRepository {
     
     
     
+    // Realm Notification
+    var notificationToken: NotificationToken?
+    
+    func detectChange(_ item: AppItemTable,
+                      completionHandler: @escaping (_ iCnt: Int, _ dCnt: Int) -> Void) {
+        
+        let data = realm.objects(AppItemTable.self).where {
+            $0.trackId == item.trackId
+        }
+        
+        notificationToken = data.observe { changes in
+            
+            switch changes {
+            case .initial(let data):
+                print("initial : \(data)")
+                
+            case .update(let data, let deletions, let insertions, let modifications):
+                completionHandler(insertions.count, deletions.count)
+                print("Update count: \(data.count)")
+                print("Delete count: \(deletions.count)")
+                print("Insert count: \(insertions.count)")
+                print("Modification count: \(modifications.count)")
+                
+            case .error(let error):
+                print("error: \(error)")
+            }
+            
+        
+        }
+        
+        
+    }
+    
     
     func printURL() {
         print(realm.configuration.fileURL!)
