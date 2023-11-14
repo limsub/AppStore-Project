@@ -16,9 +16,10 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        [searchVC, storeVC].forEach { vc in
-            vc.tabBarItem.image = UIImage(systemName: "pencil")
-        }
+        
+        
+        searchVC.tabBarItem.image = UIImage(systemName: "magnifyingglass")
+        storeVC.tabBarItem.image = UIImage(systemName: "square.stack.3d.up.fill")
         
         let navSearchVC = UINavigationController(rootViewController: searchVC)
         let navStoreVC = UINavigationController(rootViewController: storeVC)

@@ -31,6 +31,7 @@ class CustomTopDetailView: BaseView {
     let shareButton = {
         let view = UIButton()
         view.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        
         return view
     }()
     

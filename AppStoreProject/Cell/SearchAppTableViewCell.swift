@@ -53,7 +53,7 @@ class SearchAppTableViewCell: BaseTableViewCell {
         }
         downloadButton.snp.makeConstraints { make in
             make.trailing.equalTo(contentView).inset(12)
-            make.width.equalTo(70)
+            make.width.equalTo(80)
             make.height.equalTo(30)
             make.centerY.equalTo(contentView)
         }

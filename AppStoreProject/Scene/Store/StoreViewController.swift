@@ -134,5 +134,6 @@ class StoreViewController: BaseViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.hidesNavigationBarDuringPresentation = false
+        navigationItem.title = "보관함"
     }
 }

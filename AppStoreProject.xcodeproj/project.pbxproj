@@ -39,6 +39,7 @@
 		482EFC1E2AFB559B008B9B1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482EFC1C2AFB559B008B9B1E /* Main.storyboard */; };
 		482EFC202AFB559C008B9B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482EFC1F2AFB559C008B9B1E /* Assets.xcassets */; };
 		482EFC232AFB559C008B9B1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482EFC212AFB559C008B9B1E /* LaunchScreen.storyboard */; };
+		48495C172B035A4B0049BA51 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48495C162B035A4B0049BA51 /* UIColor.swift */; };
 		48676D652B023C7600EFD4EC /* ReviewRealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48676D642B023C7600EFD4EC /* ReviewRealmRepository.swift */; };
 		48676D672B0245A800EFD4EC /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48676D662B0245A800EFD4EC /* Date+Extension.swift */; };
 		489B7A8C2B01F3FD0085B23E /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B7A8B2B01F3FD0085B23E /* ReviewCollectionViewCell.swift */; };
@@ -80,6 +81,7 @@
 		482EFC1F2AFB559C008B9B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		482EFC222AFB559C008B9B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		482EFC242AFB559C008B9B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48495C162B035A4B0049BA51 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		48676D642B023C7600EFD4EC /* ReviewRealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRealmRepository.swift; sourceTree = "<group>"; };
 		48676D662B0245A800EFD4EC /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		489B7A8B2B01F3FD0085B23E /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				480D582C2AFE36EA007EDAA1 /* Reactive+Extension.swift */,
 				482157082B0074E000E2A66D /* UIViewController+Extension.swift */,
 				48676D662B0245A800EFD4EC /* Date+Extension.swift */,
+				48495C162B035A4B0049BA51 /* UIColor.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				480D582D2AFE36EA007EDAA1 /* Reactive+Extension.swift in Sources */,
 				48180AA72AFB593100192483 /* SearchAppViewModel.swift in Sources */,
 				480D58292AFE13C9007EDAA1 /* DetailViewModel.swift in Sources */,
+				48495C172B035A4B0049BA51 /* UIColor.swift in Sources */,
 				48180A912AFB573B00192483 /* BasicAPIManager.swift in Sources */,
 				489B7A8C2B01F3FD0085B23E /* ReviewCollectionViewCell.swift in Sources */,
 				48180ABB2AFB733900192483 /* RealmRepository.swift in Sources */,
