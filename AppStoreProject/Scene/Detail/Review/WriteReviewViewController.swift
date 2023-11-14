@@ -118,6 +118,9 @@ class WriteReviewViewController: BaseViewController {
         cosmosView.rx.didFinishTouchingCosmos.onNext { value in
             rate.onNext(value)
         }
+        cosmosView.rx.didTouchCosmos.onNext { value in
+            rate.onNext(value)
+        }
         
         let input = WriteReviewViewModel.Input(
                   rate: rate,
