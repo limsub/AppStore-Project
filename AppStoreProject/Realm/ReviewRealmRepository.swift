@@ -60,4 +60,33 @@ class ReviewRealmRepository {
         
         return Array(app[0].appReviews)
     }
+    
+    
+    // Realm Notification
+    var notificationToken: NotificationToken?
+    
+    func detectChangesInReview(_ trackId: Int, completionHandler: @escaping ([ReviewItemTable]) -> Void) {
+        
+        let data = realm.objects(AppReviewTable.self).where {
+            $0.trackId == trackId
+        }
+        
+        notificationToken = data.observe { changes in
+            switch changes {
+            case .initial(let data):
+                print("initial : \(data)")
+                
+            case .update(let data, _, _, _):
+                print("update : \(data)")
+                completionHandler(Array(data[0].appReviews))
+                
+            case .error(let error):
+                print("error : \(error)")
+                
+            }
+              
+        }
+        
+        
+    }
 }

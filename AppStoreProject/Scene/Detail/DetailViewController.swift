@@ -25,7 +25,7 @@ class DetailViewController: BaseViewController {
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.createReviewLayout())
         view.register(ReviewCollectionViewCell.self , forCellWithReuseIdentifier: ReviewCollectionViewCell.description())
-        
+        view.showsHorizontalScrollIndicator = false
         return view
     }()
     

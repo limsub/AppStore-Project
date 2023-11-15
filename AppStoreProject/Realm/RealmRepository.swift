@@ -134,14 +134,15 @@ class RealmRepository {
             
             switch changes {
             case .initial(let data):
-                print("initial : \(data)")
+//                print("initial : \(data)")
+                break;
                 
             case .update(let data, let deletions, let insertions, let modifications):
                 completionHandler(insertions.count, deletions.count)
-                print("Update count: \(data.count)")
-                print("Delete count: \(deletions.count)")
-                print("Insert count: \(insertions.count)")
-                print("Modification count: \(modifications.count)")
+//                print("Update count: \(data.count)")
+//                print("Delete count: \(deletions.count)")
+//                print("Insert count: \(insertions.count)")
+//                print("Modification count: \(modifications.count)")
                 
             case .error(let error):
                 print("error: \(error)")
