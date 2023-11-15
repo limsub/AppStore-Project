@@ -44,7 +44,6 @@
 		48676D672B0245A800EFD4EC /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48676D662B0245A800EFD4EC /* Date+Extension.swift */; };
 		489B7A8C2B01F3FD0085B23E /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B7A8B2B01F3FD0085B23E /* ReviewCollectionViewCell.swift */; };
 		489B7A8E2B01F4140085B23E /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B7A8D2B01F4140085B23E /* BaseCollectionViewCell.swift */; };
-		489B7A902B01F8100085B23E /* ReviewItemStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B7A8F2B01F8100085B23E /* ReviewItemStruct.swift */; };
 		489B7A922B01F8AD0085B23E /* ReviewRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B7A912B01F8AD0085B23E /* ReviewRealmModel.swift */; };
 		489B7A942B0207380085B23E /* WriteReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B7A932B0207380085B23E /* WriteReviewViewModel.swift */; };
 		48EB4DBC2B00C6260033C4C0 /* CustomTopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB4DBB2B00C6260033C4C0 /* CustomTopDetailView.swift */; };
@@ -86,7 +85,6 @@
 		48676D662B0245A800EFD4EC /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		489B7A8B2B01F3FD0085B23E /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		489B7A8D2B01F4140085B23E /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
-		489B7A8F2B01F8100085B23E /* ReviewItemStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewItemStruct.swift; sourceTree = "<group>"; };
 		489B7A912B01F8AD0085B23E /* ReviewRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRealmModel.swift; sourceTree = "<group>"; };
 		489B7A932B0207380085B23E /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
 		48EB4DBB2B00C6260033C4C0 /* CustomTopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopDetailView.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 			children = (
 				48EB4DC52B00FC3D0033C4C0 /* WriteReviewViewController.swift */,
 				489B7A932B0207380085B23E /* WriteReviewViewModel.swift */,
-				489B7A8F2B01F8100085B23E /* ReviewItemStruct.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -362,7 +359,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				48180AB12AFB605200192483 /* TabBarViewController.swift in Sources */,
-				489B7A902B01F8100085B23E /* ReviewItemStruct.swift in Sources */,
 				489B7A8E2B01F4140085B23E /* BaseCollectionViewCell.swift in Sources */,
 				480D58242AFE0BDE007EDAA1 /* DetailViewController.swift in Sources */,
 				482EFC1B2AFB559B008B9B1E /* ViewController.swift in Sources */,

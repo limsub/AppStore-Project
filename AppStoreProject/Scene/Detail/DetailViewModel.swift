@@ -28,15 +28,9 @@ class DetailViewModel: ViewModelType {
         let reviewItems: BehaviorSubject<[ReviewItemTable]>
         let isDownload: BehaviorSubject<Bool>
     }
-    
-    let realm = try! Realm()
-//    var data: Result<AppItemTable>?
-//    var notificationToken: NotificationToken?
-    
-    
+
     func transform(_ input: Input) -> Output {
     
-        
         // 이미 다운로드되어있는지 렘에서 찾기
         let isDownload = BehaviorSubject(value: false)
         isDownload.onNext(storeRepository.checkDownload(AppItemTable(appInfo!)))
@@ -80,8 +74,6 @@ class DetailViewModel: ViewModelType {
                 }
             }
             .disposed(by: disposeBag)
-        
-        
         
         
         // appInfo 기반으로 렘에서 리뷰 데이터 불러오기

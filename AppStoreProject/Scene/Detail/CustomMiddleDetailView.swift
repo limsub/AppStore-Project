@@ -40,10 +40,10 @@ class CustomMiddleDetailView: BaseView {
     
     let reviewButton = {
         let view = UIButton()
-        view.setImage(UIImage(systemName: "pencil"), for: .normal)
+        view.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
         view.setTitle("  리뷰 작성", for: .normal)
-        view.setTitleColor(UIColor.blue, for: .normal)
-        view.tintColor = .blue
+        view.setTitleColor(UIColor(hexCode: UIColor.DownloadButtonColor.text.rawValue), for: .normal)
+        view.tintColor = UIColor(hexCode: UIColor.DownloadButtonColor.text.rawValue)
         return view
     }()
     

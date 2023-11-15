@@ -10,10 +10,10 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import Cosmos
+import Kingfisher
 
 
-
-class DetailViewController: BaseViewController {
+class DetailViewController: BaseViewController, UICollectionViewDelegate {
     
     let viewModel = DetailViewModel()
 
@@ -26,6 +26,8 @@ class DetailViewController: BaseViewController {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.createReviewLayout())
         view.register(ReviewCollectionViewCell.self , forCellWithReuseIdentifier: ReviewCollectionViewCell.description())
         view.showsHorizontalScrollIndicator = false
+        
+        view.delegate = self
         return view
     }()
     
@@ -53,9 +55,6 @@ class DetailViewController: BaseViewController {
         bind()
         topView.designView(viewModel.appInfo!)
         middleView.designView(viewModel.appInfo!)
-        
-        
-        
     }
     
     func bind() {

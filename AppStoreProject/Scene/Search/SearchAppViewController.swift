@@ -84,11 +84,6 @@ class SearchAppViewController: BaseViewController {
                 let isDownloadedFirst = self.repository.checkDownload(AppItemTable(element))
                 cell.designCell(element, isDownloadedFirst: isDownloadedFirst)
                 
-                
-                
-                
-                
-                
                 cell.downloadButton.rx.tap
                     .bind(with: self) { owner , _ in
                         
@@ -161,7 +156,8 @@ class SearchAppViewController: BaseViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.hidesNavigationBarDuringPresentation = false
-
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "검색", style: .plain, target: self, action: nil)
         
     }
 

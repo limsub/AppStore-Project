@@ -26,7 +26,7 @@ class TabBarViewController: UITabBarController {
         
         let tabItem = [navSearchVC, navStoreVC ]
         
-        tabBar.backgroundColor = .lightGray
+        tabBar.backgroundColor = .white
         
         viewControllers = tabItem
         

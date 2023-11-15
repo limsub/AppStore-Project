@@ -27,9 +27,7 @@ class SearchAppViewModel: ViewModelType {
         let items: BehaviorSubject<[AppInfo]>
         let dataCnt: BehaviorSubject<Int>
         let tableViewItemSelected: Observable<(ControlEvent<IndexPath>.Element, ControlEvent<AppInfo>.Element)>
-        let tableViewReachedBottom: ControlEvent<Void> // tableView.rx.reachedBottom
-//        let nextData: PublishSubject<AppInfo>
-       
+        let tableViewReachedBottom: ControlEvent<Void> // tableView.rx.reachedBottom  
     }
 
 
