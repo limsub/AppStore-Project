@@ -12,8 +12,11 @@ import RxDataSources
 
 
 struct GenreItems {
+    
     var name: String
     var items: [Item]
+    
+//    var identity = UUID().uuidString
 }
 
 extension GenreItems: SectionModelType {

@@ -51,6 +51,8 @@ class StoreViewController: BaseViewController {
         let output = viewModel.transform(input)
         
         // 테이블뷰 데이터 세팅
+        // 애니메이션 넣으려고 했는데 이상해...
+//        let dataSource = RxTableViewSectionedAnimatedDataSource<GenreItems> { dataSource, tableView, indexPath, item in
         let dataSource = RxTableViewSectionedReloadDataSource<GenreItems> { dataSource, tableView, indexPath , item  in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoreCell", for: indexPath) as? SearchAppTableViewCell else { return UITableViewCell() }
     

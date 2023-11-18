@@ -64,7 +64,7 @@ class ReviewRealmRepository {
     
     // Realm Notification
     var notificationToken: NotificationToken?
-    
+
     func detectChangesInReview(_ trackId: Int, completionHandler: @escaping ([ReviewItemTable]) -> Void) {
         
         let data = realm.objects(AppReviewTable.self).where {
@@ -84,9 +84,6 @@ class ReviewRealmRepository {
                 print("error : \(error)")
                 
             }
-              
         }
-        
-        
     }
 }

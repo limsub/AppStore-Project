@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxDataSources
 
 struct SearchAppModel: Codable {
     let resultCount: Int
@@ -28,6 +29,8 @@ struct AppInfo: Codable {
     let trackId: Int
     let version: String
     let releaseNotes: String
+    
+//    var identity = UUID().uuidString
 }
 
 extension AppInfo {
