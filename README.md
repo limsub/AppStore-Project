@@ -103,16 +103,16 @@
         }
         .disposed(by: disposeBag)
     ```
-    
+  <img src="https://github.com/limsub/AppStore-Project/assets/99518799/fb2f5ec6-182c-4e34-b309-a803bd613905" align="center" width="24%">
+
+
 
 3. RxDataSource
 - 보관함 화면에서는 앱의 카테고리를 섹션으로 나누어 다운받은 앱 목록을 보여준다
 - 섹션이 하나인 경우에는 RxSwift의 dataSource로 구현이 가능하지만, 여러 섹션을 다루기 위해 **RxDataSource** 를 활용하였다
 
-  <img src="https://github.com/limsub/AppStore-Project/assets/99518799/91e72291-bc12-446c-8d86-96bbc3fe1914" align="center" width="24%">
+  <img src="https://github.com/limsub/AppStore-Project/assets/99518799/3669a48c-3f66-416e-92fb-6692d9e77f73" align="center" width="24%">
 
-![Alt text](ezgif-3-d057cab11b.gif)
-![Alt text](ezgif-4-7b7da0b108.gif)
 
 <br>
 
